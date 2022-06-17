@@ -28,7 +28,7 @@ namespace Financeira
         {
             Console.WriteLine($"O valor do contrato é R$ {Valor:f2}.\n" +
                               $"O prazo é {Prazo} meses.\n" + 
-                              $"O valor da prestação é R$ {CalcularPrestação():f2}.");
+                              $"O valor da prestação é R$ {CalcularPrestação():f2}.\n\n");
         }
 
     }

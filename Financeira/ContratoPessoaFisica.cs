@@ -24,14 +24,10 @@ namespace Financeira
         {
             get
             {
-                var today = DateTime.Today;
-
-                // Calculate the age.
-                var age = today.Year - DataNascimento.Year;
-
-                // Go back to the year in which the person was born in case of a leap year
-                if (DataNascimento.Date > today.AddYears(-age)) age--;
-                return age;
+                var diadeHoje = DateTime.Today;
+                var idadePessoa = diadeHoje.Year - DataNascimento.Year;
+                if (DataNascimento.Date > diadeHoje.AddYears(-idadePessoa)) idadePessoa--;
+                return idadePessoa;
             }
         }
 
@@ -62,7 +58,7 @@ namespace Financeira
             Console.WriteLine($"O valor do contrato é R$ {Valor:f2}.\n" +
                               $"O prazo é {Prazo} meses.\n" + 
                               $"O valor da prestação é R$ {CalcularPrestação():f2}.\n" +
-                              $"A idade do contratante é {Idade} anos.\n");
+                              $"A idade do contratante é {Idade} anos.\n\n");
         }
 
     }
