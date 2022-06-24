@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Financeira
@@ -77,34 +78,36 @@ namespace Financeira
 
         public string ObterCPF()
         {
-            //validação somente se a string não é vazia. Não foi feita a validação dos números inseridos.
             string cpf;
+            Regex RgxCpf = new(@"^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$");
+                      
             do
             {
                 Console.WriteLine("Insira o CPF do Contratante:");
                 cpf = Console.ReadLine();
-                if (!string.IsNullOrEmpty(cpf))
+                if (RgxCpf.Match(cpf).Success)
                 {
                     break;
                 }
-                Console.WriteLine("O valor não pode ser vazio.");
+                Console.WriteLine("Valor inválido! Digite o CPF no formato XXX.XXX.XXX-XX");
             } while (true);
             return cpf;
         }
 
         public string ObterCNPJ()
         {
-            //validação somente se a string não é vazia. Não foi feita a validação dos números inseridos.
             string cnpj;
+            Regex RgxCpf = new(@"\b[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2}\b");
+
             do
             {
                 Console.WriteLine("Insira o CNPJ do Contratante:");
                 cnpj = Console.ReadLine();
-                if (!string.IsNullOrEmpty(cnpj))
+                if (RgxCpf.Match(cnpj).Success)
                 {
                     break;
                 }
-                Console.WriteLine("O valor não pode ser vazio.");
+                Console.WriteLine("Valor inválido! Digite o CNPJ no formato XX.XXX.XXX/XXXX-XX");
             } while (true);
             return cnpj;
         }
